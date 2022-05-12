@@ -1,0 +1,23 @@
+ <div>
+    <h1>welcome to our store </h1>
+    
+       <h1> store name:{{store.Name}}</h1> 
+       
+        <img src="{{store.Logo}}" alt="logo"> 
+       
+<p style="font-size: 30px">
+    Lets Give You More Information About Our WebSite <br>
+    Our WebSite in Specialized for Buying Laptops , Mobiles ,<br>
+    Televisions And Other More Electronics
+    Lets Take A Tour In Our WebSite 
+</p>
+    
+<div style="font-size: 20px" >
+    Take A Look  To Our Branches
+    <ul style="font-weight: bold">
+        <li *ngFor="let item of store .Branches">
+            {{item}}
+
+        </li>
+    </ul>
+</div>

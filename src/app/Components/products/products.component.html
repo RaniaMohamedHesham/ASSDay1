@@ -1,0 +1,256 @@
+
+
+<div>
+    <h1>welcome to our store </h1>
+    
+       <!-- <h1> store name:{{store.Name}}</h1> -->
+       
+      <!--   <img src="{{store.Logo}}" alt="logo"> -->
+         <img  [src]="store.Logo" alt="logo">
+
+
+    <ul>
+        <li *ngFor="let item of store .Branches">
+            {{item}}
+
+        </li>
+    </ul>
+
+
+<a name="" id="" class="btn btn-primary m-2" [routerLink]="['/AddProduct']" role="button">Add Product</a>
+    
+
+<label> <h4>Enter Your Name</h4> </label>
+<input class="form-control form-control-lg d-block" type="text"  [(ngModel)]="ClientName">
+<small>{{ClientName}}</small>
+
+
+
+
+<!-- <div class="row">
+<label>Client Name</label>
+<input type="text" [(ngModel)]="Client Name">
+</div> -->
+
+
+    <!-- <select ><option *ngFor="let item of category">
+    {{item.Name}}
+    </option></select> -->
+
+
+<!-- 
+<div class="dropdown col-5">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownmenulink" data-bs-toggle="dropdown" aria-expanded="false">
+        categories
+    </a>
+
+    <ul class="dropdownmenu" aria-labelledby="dropdownmenulink">
+        <li *ngFor="let item of category" (click)="chooseID(item.ID)"><a class="dropdown-item" href="#">{{item.Name}} </a> </li>
+    </ul>
+
+</div> -->
+<br>
+<br>
+<br>
+
+
+<select class="form-select" aria-label="Default select example" [(ngModel)]="SelectedID" #show (change)="showproduct(show.value)" >
+    <option selected value="0">Open this select menu</option>
+    <option *ngFor="let item of catList" [value]="item.id">
+        {{item.name}}
+    </option>
+    
+  </select>
+
+  
+ 
+    <!-- <table class="table" *ngIf="isPurshased"  >
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+
+                <th scope="col">Quantity</th>
+
+                <th scope="col">Price</th>
+
+                <th scope="col">image</th>
+
+
+                <th scope="col">todayDate</th>
+
+                <th scope="col">Add To Cart</th>
+                <th scope="col">Details</th>
+
+                <th scope="col">Items Count</th>
+
+                
+               
+            </tr>
+            
+        </thead>
+
+       <input type="text" [(ngModel)]="CreditCard">
+       <div>
+        <ng-container *ngIf="CreditCard">
+          {{CreditCard|creditCard}}
+        </ng-container>
+       </div>
+
+
+       <input type="text" [(ngModel)]="nationalID">
+       <div>
+        <ng-container *ngIf="nationalID">
+          {{nationalID|epyptianID:''}}
+        </ng-container>
+       </div>
+       
+        <tbody> -->
+
+            <!-- <tr *ngFor="let item of productlist" [class.bg-warning]="item.Quantity==1"> -->
+              
+
+            <!-- <ng-container *ngFor="let item of NewProductList" > -->
+
+            <!-- <ng-container *ngFor="let item of prodListOfCat" > -->
+
+               
+
+                
+
+
+      <!-- <tr *ngIf="item.quantity!=0"  [ngStyle]="{'background-color':item.quantity==1? 'yellow':'lightgray', 'color':item.quantity==1? 'red':'green'}">
+                <th scope="row">{{item.id}}</th>
+                <td>{{item.name}}</td>
+                <td>{{item.quantity}}</td>
+                <td>{{item.price |currency:'EGP'}}</td>
+                <td><img appProductCard  src="{{item.img}}" style="height: 200px ;width: 150px"></td>
+
+
+               <td>{{todayDate|date:'mediumTime'}}</td>
+            
+            <td><a name="" id="" class="btn btn-primary"  role="button" [routerLink]="['/Products', item.id]">Details</a></td>
+                
+                <td> <input #itemsCount type="number" class="btn btn-secondary"> </td>
+                  
+                <td> <button type="button" class="btn btn-secondary" [value]="itemsCount.value" (click)="AddItemToCard(item,+itemsCount.value)"> Add To Card</button></td>
+
+                 <button class="btn btn-primary"(click)="item.quantity=item.quantity-1"> buyNow</button>  -->
+
+
+                 
+
+            <!-- </tr> -->
+            <!-- </ng-container>
+
+            
+        </tbody>
+
+    </table> -->
+
+
+
+
+
+
+    <!-- style="width: 18rem;" -->
+     
+
+ 
+    <div class="card-group ">
+       
+            <div *ngFor="let item of prodListOfCat" >
+                        <div>
+                            
+
+                    <div class="card w-75 mt-5" *ngIf="item.quantity!=0"  [ngStyle]="{'background-color':item.quantity==1? 'yellow':'light', 'color':item.quantity==1? 'red':'green'}">
+                        <img appProductCard src="{{item.img}}"    (click)="OpenPopUp(item.id)" data-bs-toggle="modal"   data-bs-target="#exampleModal" class="card-img-top" alt="...">
+                        <div class="card-body text-dark" >
+                            <p>{{item.id}}</p>
+                            <p>{{item.name}}</p>
+                            <p>{{item.quantity}}</p>
+                            <p>{{item.price |currency:'EGP'}}</p>
+                            
+                          <p class="card-text text-primary">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                
+                         <!-- <a name="" id="" class="btn btn-primary"  role="button" [routerLink]="['/Products', item.id]">Details</a> -->
+                         <button type="button" class="btn btn-primary"   (click)="OpenPopUp(item.id)" data-bs-toggle="modal"   data-bs-target="#exampleModal">Details</button>
+                           
+
+                           <input #itemsCount type="number" class="btn btn-secondary w-25 m-2"  > 
+                                  
+                           <!-- <button type="button" class="btn btn-secondary m-2"  [value]="itemsCount.value" (click)="AddItemToCard(item,+itemsCount.value)"> Add To Card</button> -->
+                           <button type="button" class="btn btn-secondary m-2"   (click)="addtocart(item)"> Add To Card</button>
+                              
+                            
+                           
+                           <button class="btn btn-primary m-2"(click)="item.quantity=item.quantity-1"> buyNow</button> 
+
+                           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Details</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                              
+                                <div class="modal-body" >
+                                    <!-- <div *ngFor="let item of prodListOfCat">
+                                    </div> -->
+                                    <div *ngFor="let item of prodListOfCat ;let i=index">
+
+                                    </div>
+
+                            <img appProductCard src="{{product?.img}}"  class="card-img-top" alt="...">
+
+                                    <p>{{product?.id}}</p>
+                                    <p>{{product?.name}}</p>
+                                    <p>{{product?.quantity}}</p>
+                                    <p>{{product?.price |currency:'EGP'}}</p>
+                                </div>
+                                
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                  
+                                </div>
+                              </div>
+                            
+                          </div>
+                           </div>
+                        </div>
+                     </div>
+                 
+
+                </div>
+
+            </div>
+            
+ </div>
+
+   
+
+
+
+
+
+<!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+ 
+
+
+ 
+   
+    <!-- <div>
+        <h4>Total Price in nested component:{{orderTotalPrice}}</h4>
+    </div> -->
+
+
+
+
+
+<!-- 
+    <button type="button" class="btn btn-primary"(click)="toggleTable()" > Buy</button>
+       <div *ngIf="divflag"> <h1> Thanks for purchasing from our Store </h1></div>
+</div> -->

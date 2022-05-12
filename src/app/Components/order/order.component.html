@@ -1,0 +1,64 @@
+<div class="mb-3">
+    <label for="" class="form-label">Select Category</label>
+    <select class="form-control" name="cat" id="CatSel" title="category"
+        [(ngModel)]="selectedCatID">
+        
+      <option value="0">Select All</option>
+      <option *ngFor="let cat of catList" [value]="cat.id">{{cat.name}}</option>
+    </select>
+  
+  </div>
+  <hr>
+
+
+<div>
+    <app-products [receiverselectedCatID]="selectedCatID" 
+    (additemtocard)="AddToParentCart($event)"></app-products>
+  
+
+</div>
+
+<table  class="table table-hover" >
+    <thead>
+        <tr>
+           <!--  <th scope="col">Id</th> -->
+           <!--  <th scope="col">ID</th> -->
+            <!-- <th scope="col">Name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col">Total</th> -->
+           
+            <!-- <th scope="col">Remove</th> -->
+            
+            
+          </tr>
+    </thead>
+    <tbody>
+        <tr  *ngFor="let item of ArryCart" > 
+            <!--  <td >{{item.Id }}</td>  -->
+             <td >{{item.productName }}</td>
+             <td >{{item.count }}</td>
+             <td >{{item.productPrice }}</td>
+             <td >{{item.productPrice * item.count}}</td>
+             <td >
+            <button type="button" class="btn btn-dark btn-block" role="button" (click) ="Remove()">Remove</button>
+
+             </td>
+
+             
+          </tr>  
+    </tbody>
+   
+</table>
+
+
+
+<!-- <div class="border p-4 text-center">
+  <h4 class="text-center">Total Price {{TotalPrice | currency}} </h4>
+<button type="button" class="btn btn-dark" style="width:140px" role="button" (click)="Confirmation()">Order</button> -->
+
+<!-- </div> -->
+<hr>
+<!-- <h2>order total price {{receiverOrderTotalPrics|currency}}</h2> -->
+
+
